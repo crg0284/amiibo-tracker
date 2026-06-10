@@ -22,10 +22,7 @@
 </head>
 <body>
   <div id="root">
-    <div id="loading">
-      <div class="spin"></div>
-      <p>Loading Amiibo Tracker…</p>
-    </div>
+    <div id="loading"><div class="spin"></div><p>Loading Amiibo Tracker…</p></div>
   </div>
   <script>/**
  * @license React
@@ -334,7 +331,6 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   var useState  = React.useState;
   var useEffect = React.useEffect;
   if (typeof IMG === 'undefined') { window.IMG = {}; }
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -2986,9 +2982,9 @@ function AmiiboTracker() {
     setPhotos = _useState6[1]; // {id: {front: base64, back: base64}}
 
   // Image lookup — hardcoded URLs from GitHub (AmiiboAPI image repo)
-  var getImg = function getImg(imgKey) {
+    var getImg = function getImg(imgKey) {
     if (!imgKey) return null;
-    return IMG[imgKey] || IMG[imgKey.split(' (')[0]] || IMG[imgKey.split(' - ')[0]] || null;
+    return IMG[imgKey] || null;
   };
   var allAmiibos = [].concat(CATALOG, _toConsumableArray(customAmiibos));
   var _useState7 = useState("all"),
@@ -4725,7 +4721,6 @@ function AmiiboTracker() {
     }
   }, "Add to Collection")))));
 }
-
 
   ReactDOM.createRoot(document.getElementById('root'))
           .render(React.createElement(AmiiboTracker));
