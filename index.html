@@ -3167,7 +3167,7 @@ function AmiiboTracker() {
   };
   var fetchMarketPrice = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(amiiboId, amiiboName, series, condition) {
-      var key, cond, condLabel, prompt, resp, _err$error, err, data, textBlock, raw, parsed, _t;
+      var key, cond, condLabel, prompt, resp, _errBody$error, errBody, data, textBlocks, raw, jsonMatch, parsed, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
@@ -3181,8 +3181,8 @@ function AmiiboTracker() {
           case 1:
             setPriceLoading(amiiboId);
             cond = condition || 'Mint';
-            condLabel = cond === 'Sealed' ? 'sealed new in box NIB' : cond === 'Mint' ? 'loose mint condition' : cond === 'Near Mint' ? 'loose near mint condition' : cond === 'Good' ? 'loose good condition' : 'loose fair condition';
-            prompt = "Search eBay completed/sold listings for the \"".concat(amiiboName, "\" amiibo from the \"").concat(series, "\" series, specifically ").concat(condLabel, ". Return ONLY a raw JSON object (no markdown, no explanation):\n{\n  \"low\": 12.99,\n  \"avg\": 18.50,\n  \"high\": 24.00,\n  \"num_sales\": 15,\n  \"summary\": \"One sentence market summary\"\n}\nIf insufficient data found, return nulls for unknown fields but always return valid JSON.");
+            condLabel = cond === 'Sealed' ? 'sealed new in box NIB' : cond === 'Mint' ? 'loose mint' : cond === 'Near Mint' ? 'loose near mint' : cond === 'Good' ? 'loose good condition' : 'loose fair condition';
+            prompt = 'Search eBay completed/sold listings for the "' + amiiboName + '" amiibo (' + series + ' series) ' + condLabel + '. Return ONLY valid JSON, no markdown:\n{"low":12.99,"avg":18.50,"high":24.00,"num_sales":15,"summary":"one sentence summary"}\nUse null for unknown fields.';
             _context.p = 2;
             _context.n = 3;
             return fetch('https://api.anthropic.com/v1/messages', {
@@ -3194,8 +3194,8 @@ function AmiiboTracker() {
                 'anthropic-dangerous-direct-browser-calls': 'true'
               },
               body: JSON.stringify({
-                model: 'claude-sonnet-4-20250514',
-                max_tokens: 512,
+                model: 'claude-haiku-4-5-20251001',
+                max_tokens: 1024,
                 tools: [{
                   type: 'web_search_20250305',
                   name: 'web_search'
@@ -3213,36 +3213,46 @@ function AmiiboTracker() {
               break;
             }
             _context.n = 4;
-            return resp.json();
+            return resp.json().catch(function () {
+              return {};
+            });
           case 4:
-            err = _context.v;
-            throw new Error(((_err$error = err.error) === null || _err$error === void 0 ? void 0 : _err$error.message) || "API error ".concat(resp.status));
+            errBody = _context.v;
+            throw new Error(((_errBody$error = errBody.error) === null || _errBody$error === void 0 ? void 0 : _errBody$error.message) || 'API error ' + resp.status);
           case 5:
             _context.n = 6;
             return resp.json();
           case 6:
             data = _context.v;
-            textBlock = data.content.filter(function (b) {
+            // Handle multi-turn response: find the last text block
+            textBlocks = (data.content || []).filter(function (b) {
               return b.type === 'text';
-            }).pop();
-            if (textBlock) {
+            });
+            if (textBlocks.length) {
               _context.n = 7;
               break;
             }
-            throw new Error('No response from API');
+            throw new Error('No text in response');
           case 7:
-            raw = textBlock.text.replace(/```json|```/g, '').trim();
-            parsed = JSON.parse(raw);
+            raw = textBlocks[textBlocks.length - 1].text.replace(/```json|```/g, '').trim(); // Extract JSON even if there's surrounding text
+            jsonMatch = raw.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+              _context.n = 8;
+              break;
+            }
+            throw new Error('No JSON in response');
+          case 8:
+            parsed = JSON.parse(jsonMatch[0]);
             setMarketPrices(function (prev) {
               return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, amiiboId, _objectSpread(_objectSpread({}, parsed), {}, {
                 condition: cond,
                 ts: new Date().toLocaleDateString()
               })));
             });
-            _context.n = 9;
+            _context.n = 10;
             break;
-          case 8:
-            _context.p = 8;
+          case 9:
+            _context.p = 9;
             _t = _context.v;
             setMarketPrices(function (prev) {
               return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, amiiboId, {
@@ -3250,14 +3260,14 @@ function AmiiboTracker() {
                 ts: new Date().toLocaleDateString()
               }));
             });
-          case 9:
-            _context.p = 9;
-            setPriceLoading(null);
-            return _context.f(9);
           case 10:
+            _context.p = 10;
+            setPriceLoading(null);
+            return _context.f(10);
+          case 11:
             return _context.a(2);
         }
-      }, _callee, null, [[2, 8, 9, 10]]);
+      }, _callee, null, [[2, 9, 10, 11]]);
     }));
     return function fetchMarketPrice(_x, _x2, _x3, _x4) {
       return _ref.apply(this, arguments);
@@ -3363,6 +3373,16 @@ function AmiiboTracker() {
       maximumFractionDigits: 2
     });
   };
+
+  // Sum all looked-up market avg values for owned amiibos
+  var totalMarketValue = allAmiibos.reduce(function (sum, a) {
+    var s = getState(a.id);
+    if (!s.owned) return sum;
+    var mp = marketPrices[a.id];
+    if (!mp || mp.error || mp.avg == null) return sum;
+    var copies = 1 + (s.copies || []).length;
+    return sum + Number(mp.avg) * copies;
+  }, 0);
   var toggle = function toggle(id, field) {
     return setCollection(function (p) {
       var c = p[id] || {};
@@ -3621,7 +3641,30 @@ function AmiiboTracker() {
       color: "rgba(255,255,255,.7)",
       letterSpacing: .5
     }
-  }, "VALUE")))), /*#__PURE__*/React.createElement("div", {
+  }, "PAID")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "rgba(0,0,0,.3)",
+      border: "1.5px solid rgba(255,255,255,.15)",
+      borderRadius: 14,
+      padding: "10px 16px",
+      textAlign: "center",
+      minWidth: 90
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 16,
+      fontWeight: 900,
+      color: "#A78BFA",
+      letterSpacing: -0.5
+    }
+  }, totalMarketValue > 0 ? fmtValue(totalMarketValue) : '--'), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: "rgba(255,255,255,.7)",
+      letterSpacing: .5
+    }
+  }, "MARKET")))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "space-between",
