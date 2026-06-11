@@ -332,6 +332,10 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   var useEffect = React.useEffect;
   if (typeof IMG === 'undefined') { window.IMG = {}; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -991,6 +995,7 @@ var REGIONS = {
 };
 
 // packType: null=single box only | "single"=standalone of a pack figure | "2-pack"/"3-pack"=pack release | "Special"=limited
+// IMG injected
 
 var CATALOG = [
 // ── SUPER SMASH BROS. ────────────────────────────────────────────────────
@@ -2169,7 +2174,7 @@ var CATALOG = [
   name: "Kapp'n",
   series: "Animal Crossing",
   packType: null,
-  imgKey: "Kappn"
+  imgKey: "Kapp'n"
 }, {
   id: "ac-15",
   name: "Rover",
@@ -2947,6 +2952,7 @@ function getStorageUsedKB() {
   return Math.round(total / 1024);
 }
 function AmiiboTracker() {
+  var _marketPrices$selecte, _marketPrices$selecte2;
   var _useState = useState(function () {
       var saved = loadState();
       var base = {};
@@ -2982,9 +2988,9 @@ function AmiiboTracker() {
     setPhotos = _useState6[1]; // {id: {front: base64, back: base64}}
 
   // Image lookup — hardcoded URLs from GitHub (AmiiboAPI image repo)
-    var getImg = function getImg(imgKey) {
+  var getImg = function getImg(imgKey) {
     if (!imgKey) return null;
-    return IMG[imgKey] || null;
+    return IMG[imgKey] || IMG[imgKey.split(' (')[0]] || IMG[imgKey.split(' - ')[0]] || null;
   };
   var allAmiibos = [].concat(CATALOG, _toConsumableArray(customAmiibos));
   var _useState7 = useState("all"),
@@ -3076,6 +3082,28 @@ function AmiiboTracker() {
     _useState30 = _slicedToArray(_useState29, 2),
     importStatus = _useState30[0],
     setImportStatus = _useState30[1]; // null | 'success' | 'error'
+  var _useState31 = useState({}),
+    _useState32 = _slicedToArray(_useState31, 2),
+    marketPrices = _useState32[0],
+    setMarketPrices = _useState32[1]; // {id: {low,avg,high,num_sales,summary,ts,error}}
+  var _useState33 = useState(null),
+    _useState34 = _slicedToArray(_useState33, 2),
+    priceLoading = _useState34[0],
+    setPriceLoading = _useState34[1]; // amiiboId currently loading
+  var _useState35 = useState(function () {
+      try {
+        return localStorage.getItem('amiibo_api_key') || '';
+      } catch (e) {
+        return '';
+      }
+    }),
+    _useState36 = _slicedToArray(_useState35, 2),
+    apiKey = _useState36[0],
+    setApiKey = _useState36[1];
+  var _useState37 = useState(false),
+    _useState38 = _slicedToArray(_useState37, 2),
+    showApiSetup = _useState38[0],
+    setShowApiSetup = _useState38[1];
 
   // ── EXPORT: bundle everything into a .json file and download to Files app ──
   var exportBackup = function exportBackup() {
@@ -3131,6 +3159,110 @@ function AmiiboTracker() {
     };
     input.click();
   };
+  var saveApiKey = function saveApiKey(key) {
+    setApiKey(key);
+    try {
+      localStorage.setItem('amiibo_api_key', key);
+    } catch (e) {}
+  };
+  var fetchMarketPrice = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(amiiboId, amiiboName, series, condition) {
+      var key, cond, condLabel, prompt, resp, _err$error, err, data, textBlock, raw, parsed, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            key = apiKey;
+            if (key.trim()) {
+              _context.n = 1;
+              break;
+            }
+            setShowApiSetup(true);
+            return _context.a(2);
+          case 1:
+            setPriceLoading(amiiboId);
+            cond = condition || 'Mint';
+            condLabel = cond === 'Sealed' ? 'sealed new in box NIB' : cond === 'Mint' ? 'loose mint condition' : cond === 'Near Mint' ? 'loose near mint condition' : cond === 'Good' ? 'loose good condition' : 'loose fair condition';
+            prompt = "Search eBay completed/sold listings for the \"".concat(amiiboName, "\" amiibo from the \"").concat(series, "\" series, specifically ").concat(condLabel, ". Return ONLY a raw JSON object (no markdown, no explanation):\n{\n  \"low\": 12.99,\n  \"avg\": 18.50,\n  \"high\": 24.00,\n  \"num_sales\": 15,\n  \"summary\": \"One sentence market summary\"\n}\nIf insufficient data found, return nulls for unknown fields but always return valid JSON.");
+            _context.p = 2;
+            _context.n = 3;
+            return fetch('https://api.anthropic.com/v1/messages', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': key.trim(),
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-calls': 'true'
+              },
+              body: JSON.stringify({
+                model: 'claude-sonnet-4-20250514',
+                max_tokens: 512,
+                tools: [{
+                  type: 'web_search_20250305',
+                  name: 'web_search'
+                }],
+                messages: [{
+                  role: 'user',
+                  content: prompt
+                }]
+              })
+            });
+          case 3:
+            resp = _context.v;
+            if (resp.ok) {
+              _context.n = 5;
+              break;
+            }
+            _context.n = 4;
+            return resp.json();
+          case 4:
+            err = _context.v;
+            throw new Error(((_err$error = err.error) === null || _err$error === void 0 ? void 0 : _err$error.message) || "API error ".concat(resp.status));
+          case 5:
+            _context.n = 6;
+            return resp.json();
+          case 6:
+            data = _context.v;
+            textBlock = data.content.filter(function (b) {
+              return b.type === 'text';
+            }).pop();
+            if (textBlock) {
+              _context.n = 7;
+              break;
+            }
+            throw new Error('No response from API');
+          case 7:
+            raw = textBlock.text.replace(/```json|```/g, '').trim();
+            parsed = JSON.parse(raw);
+            setMarketPrices(function (prev) {
+              return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, amiiboId, _objectSpread(_objectSpread({}, parsed), {}, {
+                condition: cond,
+                ts: new Date().toLocaleDateString()
+              })));
+            });
+            _context.n = 9;
+            break;
+          case 8:
+            _context.p = 8;
+            _t = _context.v;
+            setMarketPrices(function (prev) {
+              return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, amiiboId, {
+                error: _t.message,
+                ts: new Date().toLocaleDateString()
+              }));
+            });
+          case 9:
+            _context.p = 9;
+            setPriceLoading(null);
+            return _context.f(9);
+          case 10:
+            return _context.a(2);
+        }
+      }, _callee, null, [[2, 8, 9, 10]]);
+    }));
+    return function fetchMarketPrice(_x, _x2, _x3, _x4) {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
   // Compress image to max 800px wide, JPEG quality 0.75 — keeps each photo ~80-150KB
   var compressImage = function compressImage(dataUrl, maxW, quality) {
@@ -3318,10 +3450,10 @@ function AmiiboTracker() {
     return a.id === selected;
   });
   var selState = selected ? getState(selected) : null;
-  var PackBadge = function PackBadge(_ref) {
-    var packType = _ref.packType,
-      _ref$small = _ref.small,
-      small = _ref$small === void 0 ? false : _ref$small;
+  var PackBadge = function PackBadge(_ref2) {
+    var packType = _ref2.packType,
+      _ref2$small = _ref2.small,
+      small = _ref2$small === void 0 ? false : _ref2$small;
     var ps = PACK_STYLE[packType];
     if (!(ps !== null && ps !== void 0 && ps.label)) return null;
     return /*#__PURE__*/React.createElement("span", {
@@ -3342,10 +3474,10 @@ function AmiiboTracker() {
   };
 
   // AmiiboPic renders inline - error handling via CSS trick
-  var AmiiboPic = function AmiiboPic(_ref2) {
-    var imgKey = _ref2.imgKey,
-      _ref2$size = _ref2.size,
-      size = _ref2$size === void 0 ? 56 : _ref2$size;
+  var AmiiboPic = function AmiiboPic(_ref3) {
+    var imgKey = _ref3.imgKey,
+      _ref3$size = _ref3.size,
+      size = _ref3$size === void 0 ? 56 : _ref3$size;
     var src = getImg(imgKey);
     if (!src) return /*#__PURE__*/React.createElement("span", {
       style: {
@@ -3581,10 +3713,10 @@ function AmiiboTracker() {
       flexWrap: "wrap",
       marginBottom: 9
     }
-  }, [["all", "All"], ["owned", "✓ Owned"], ["wishlist", "♡ Wishlist"]].map(function (_ref3) {
-    var _ref4 = _slicedToArray(_ref3, 2),
-      f = _ref4[0],
-      l = _ref4[1];
+  }, [["all", "All"], ["owned", "✓ Owned"], ["wishlist", "♡ Wishlist"]].map(function (_ref4) {
+    var _ref5 = _slicedToArray(_ref4, 2),
+      f = _ref5[0],
+      l = _ref5[1];
     return /*#__PURE__*/React.createElement("button", {
       key: f,
       className: "pill",
@@ -3604,10 +3736,10 @@ function AmiiboTracker() {
       flexWrap: "wrap",
       marginBottom: 9
     }
-  }, [["All", "📦 All"], ["Singles", "Singles"], ["single", "1️⃣ Single"], ["2-pack", "2️⃣ 2-Pack"], ["3-pack", "3️⃣ 3-Pack"], ["Special", "✦ Special"]].map(function (_ref5) {
-    var _ref6 = _slicedToArray(_ref5, 2),
-      f = _ref6[0],
-      l = _ref6[1];
+  }, [["All", "📦 All"], ["Singles", "Singles"], ["single", "1️⃣ Single"], ["2-pack", "2️⃣ 2-Pack"], ["3-pack", "3️⃣ 3-Pack"], ["Special", "✦ Special"]].map(function (_ref6) {
+    var _ref7 = _slicedToArray(_ref6, 2),
+      f = _ref7[0],
+      l = _ref7[1];
     var ps = PACK_STYLE[f];
     var active = packFilter === f;
     var col = (ps === null || ps === void 0 ? void 0 : ps.color) || (f === "All" ? "#E8003C" : "#aaa");
@@ -3631,10 +3763,10 @@ function AmiiboTracker() {
       flexWrap: "wrap",
       marginBottom: 9
     }
-  }, [["All", "🌍 All Regions"], ["NA", "🇺🇸 NA"], ["PAL", "🇪🇺 PAL"], ["JP", "🇯🇵 JP"]].map(function (_ref7) {
-    var _ref8 = _slicedToArray(_ref7, 2),
-      f = _ref8[0],
-      l = _ref8[1];
+  }, [["All", "🌍 All Regions"], ["NA", "🇺🇸 NA"], ["PAL", "🇪🇺 PAL"], ["JP", "🇯🇵 JP"]].map(function (_ref8) {
+    var _ref9 = _slicedToArray(_ref8, 2),
+      f = _ref9[0],
+      l = _ref9[1];
     var cols = {
       "NA": "#3B82F6",
       "PAL": "#10B981",
@@ -4298,7 +4430,136 @@ function AmiiboTracker() {
       e.currentTarget.style.borderColor = "#2e3450";
       e.currentTarget.style.color = "#555";
     }
-  }, "+ Add Duplicate Copy")), selState.owned && /*#__PURE__*/React.createElement("div", {
+  }, "+ Add Duplicate Copy")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 14,
+      background: "#0d1117",
+      borderRadius: 12,
+      border: "1.5px solid #1e2535",
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "12px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 900,
+      color: "#aaa",
+      letterSpacing: 1
+    }
+  }, "\uD83D\uDCC8 MARKET VALUE"), ((_marketPrices$selecte = marketPrices[selected]) === null || _marketPrices$selecte === void 0 ? void 0 : _marketPrices$selecte.ts) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: "#444",
+      marginTop: 2
+    }
+  }, marketPrices[selected].condition, " \xB7 Updated ", marketPrices[selected].ts)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      alignItems: "center"
+    }
+  }, !apiKey && /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setShowApiSetup(true);
+    },
+    style: {
+      background: "none",
+      border: "1px solid #F59E0B",
+      borderRadius: 8,
+      color: "#F59E0B",
+      padding: "4px 10px",
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer",
+      fontFamily: "inherit"
+    }
+  }, "\uD83D\uDD11 Set Key"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return fetchMarketPrice(selected, selAmiibo.name, selAmiibo.series, selState.condition || 'Mint');
+    },
+    disabled: priceLoading === selected,
+    style: {
+      background: priceLoading === selected ? "#1a1f2e" : SERIES_COLORS[selAmiibo === null || selAmiibo === void 0 ? void 0 : selAmiibo.series] || "#E8003C",
+      border: "none",
+      borderRadius: 20,
+      padding: "6px 14px",
+      color: "#fff",
+      fontSize: 11,
+      fontWeight: 700,
+      cursor: priceLoading === selected ? "not-allowed" : "pointer",
+      fontFamily: "inherit",
+      opacity: priceLoading === selected ? 0.6 : 1
+    }
+  }, priceLoading === selected ? "Searching…" : "🔍 Look Up"))), !marketPrices[selected] && priceLoading !== selected && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "0 14px 12px",
+      fontSize: 11,
+      color: "#444"
+    }
+  }, "Searches eBay sold listings based on the condition you've set (", selState.condition || 'Mint', ")."), ((_marketPrices$selecte2 = marketPrices[selected]) === null || _marketPrices$selecte2 === void 0 ? void 0 : _marketPrices$selecte2.error) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "0 14px 12px",
+      fontSize: 11,
+      color: "#f87171"
+    }
+  }, "\u26A0 ", marketPrices[selected].error), marketPrices[selected] && !marketPrices[selected].error && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "0 14px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(3,1fr)",
+      gap: 8,
+      marginBottom: 8
+    }
+  }, [["LOW", marketPrices[selected].low, "#60A5FA"], ["AVG", marketPrices[selected].avg, "#4ADE80"], ["HIGH", marketPrices[selected].high, "#FBBF24"]].map(function (_ref0) {
+    var _ref1 = _slicedToArray(_ref0, 3),
+      label = _ref1[0],
+      val = _ref1[1],
+      col = _ref1[2];
+    return /*#__PURE__*/React.createElement("div", {
+      key: label,
+      style: {
+        background: "#1a1f2e",
+        borderRadius: 8,
+        padding: "8px",
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 9,
+        color: "#555",
+        fontWeight: 700,
+        letterSpacing: 1,
+        marginBottom: 3
+      }
+    }, label), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 15,
+        fontWeight: 900,
+        color: col
+      }
+    }, val != null ? "$".concat(Number(val).toFixed(2)) : "—"));
+  })), marketPrices[selected].num_sales && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: "#555",
+      marginBottom: 5
+    }
+  }, "~", marketPrices[selected].num_sales, " recent eBay sales"), marketPrices[selected].summary && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: "#666",
+      lineHeight: 1.6
+    }
+  }, marketPrices[selected].summary))), selState.owned && /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 14
     }
@@ -4618,7 +4879,102 @@ function AmiiboTracker() {
     style: {
       color: "#aaa"
     }
-  }, "Restore from File"), " \u2192 pick the .json from Files", /*#__PURE__*/React.createElement("br", null), "4. Back up whenever you add new amiibos \uD83D\uDC4D")))), showAdd && /*#__PURE__*/React.createElement("div", {
+  }, "Restore from File"), " \u2192 pick the .json from Files", /*#__PURE__*/React.createElement("br", null), "4. Back up whenever you add new amiibos \uD83D\uDC4D")))), showApiSetup && /*#__PURE__*/React.createElement("div", {
+    className: "mbg",
+    onClick: function onClick() {
+      return setShowApiSetup(false);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    },
+    style: {
+      maxWidth: 380
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 900,
+      fontSize: 17,
+      marginBottom: 8,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, "\uD83D\uDD11 API Key for Market Lookup", /*#__PURE__*/React.createElement("button", {
+    className: "ibtn",
+    onClick: function onClick() {
+      return setShowApiSetup(false);
+    }
+  }, "\u2715")), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 12,
+      color: "#666",
+      marginBottom: 16,
+      lineHeight: 1.6
+    }
+  }, "Market value lookup uses Claude AI to search eBay sold listings. Each lookup costs ~$0.01. You need a free Anthropic API key."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: "#666",
+      letterSpacing: 1,
+      marginBottom: 6
+    }
+  }, "ANTHROPIC API KEY"), /*#__PURE__*/React.createElement("input", {
+    className: "ifield",
+    type: "password",
+    placeholder: "sk-ant-api03-...",
+    value: apiKey,
+    onChange: function onChange(e) {
+      return saveApiKey(e.target.value);
+    },
+    style: {
+      fontSize: 13
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: "#444",
+      marginTop: 6
+    }
+  }, "Stored locally on your device only.")), /*#__PURE__*/React.createElement("a", {
+    href: "https://console.anthropic.com/settings/keys",
+    target: "_blank",
+    style: {
+      display: "block",
+      background: "#1a1f2e",
+      border: "1.5px solid #2e3450",
+      borderRadius: 12,
+      padding: "12px 16px",
+      color: "#60A5FA",
+      fontSize: 12,
+      fontWeight: 700,
+      textDecoration: "none",
+      marginBottom: 12,
+      textAlign: "center"
+    }
+  }, "\uD83C\uDF10 Get free API key at console.anthropic.com \u2192"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setShowApiSetup(false);
+    },
+    style: {
+      width: "100%",
+      background: "#E8003C",
+      border: "none",
+      borderRadius: 12,
+      padding: "12px",
+      color: "#fff",
+      fontSize: 14,
+      fontWeight: 700,
+      cursor: "pointer",
+      fontFamily: "inherit"
+    }
+  }, "Save & Close"))), showAdd && /*#__PURE__*/React.createElement("div", {
     className: "mbg",
     onClick: function onClick() {
       return setShowAdd(false);
